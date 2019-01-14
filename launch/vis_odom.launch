@@ -1,0 +1,26 @@
+<launch>
+
+<<<<<<< HEAD
+  <group ns="camera/rgb">
+    <node pkg="image_proc" type="image_proc" name="image_proc" />
+  </group>
+=======
+  <!--group ns="/camera/rgb">
+    <node pkg="image_proc" type="image_proc" name="image_proc" />
+  </group-->
+>>>>>>> a0755af9a52a11b8bf51d3389f98342c75c0d72d
+
+  <group ns="rtabmap">
+
+    <node pkg="rtabmap_ros" type="rgbd_odometry" name="rgbd_odometry" output="screen">
+      <remap from="rgb/image"       to="/camera/rgb/image_rect_color"/>
+      <remap from="depth/image"     to="/camera/depth/image_raw"/>
+      <remap from="rgb/camera_info" to="/camera/rgb/camera_info"/>
+
+      <param name="frame_id" type="string" value="base_link"/>
+      <param name="child_frame_id" type="string" value="camera_link"/>
+      <param name="queue_size" type="int" value="10"/>
+      <param name="publish_tf" type="bool" value="true"/>
+    </node>
+  </group>
+</launch>
